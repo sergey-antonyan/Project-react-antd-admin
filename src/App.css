@@ -1,38 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
 .App {
+  text-align: center;
+  font-family: 'Alegreya', serif;
+}
+
+.registerCont{
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.registerChild{
+  margin-top: 35px;
+  border: 5px solid;
+  border-image: linear-gradient(to right, #ffbf00, #ff0080) 1;
+  border-radius: 10px;
+  padding: 20px;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Logo{
+  height: 64px;
+  background-color: #ff0080;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Logo h1{
+  font-weight: 900;
+  padding: 16px ;
+}
+
+
+
+.registerChild form{
+  margin:19px;
+}
+
+.loginCont{
+  margin-top: 100px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.loginChild{
+  width: 310px;
+  border: 5px solid;
+  border-image: linear-gradient(to right, #ffbf00, #ff0080) 1;
+  border-radius: 10px;
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-form {
+  max-width: 300px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+
+.login-form-button {
+  width: 100%;
+  font-weight: 600;
+}
+
+.ant-menu-title-content{  
+  font-size: 15px;
+}
+
+.center{
+  justify-content: center;
+  text-align: center;
 }

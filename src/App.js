@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import 'antd/dist/reset.css';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import MainLayout from './Components/MainLayout';
+import Dashboard from './Pages/Dashboard';
+import Users from './Pages/Users'
+import ProductList from './Pages/ProductList';
+import CategoryList from './Pages/CategoryList';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   
+    <Router>
+      <Routes>
+        <Route path='/login' element={<Login/>} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/admin' element={<MainLayout/>}>
+          <Route index element={<Dashboard/>} />
+          <Route path='customers' element={<Users/>}/>
+          <Route path='productList' element={<ProductList/>}/>
+          <Route path='categorylist' element={<CategoryList/>}/>
+          
+        </Route>
+      </Routes>
+    </Router>
+    
   );
 }
 
