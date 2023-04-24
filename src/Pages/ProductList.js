@@ -6,7 +6,26 @@ const ProductList = () => {
 
   const [users, setUsers] = useState([]);
   const [editRow, setEditRow] = useState(null)
-  const [form] = Form.useForm()
+  const [form] = Form.useForm();
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/products');
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    if (formSubmitted) {
+      fetchUsers();
+      setFormSubmitted(false);
+    }
+  }, [formSubmitted]);
+  
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -22,15 +41,40 @@ const ProductList = () => {
     fetchUsers();
   }, []);
 
-  
-
-  const onFinish = (values) =>{
+  const onFinish = async (values) =>{
     const updatedDataSource =[...users]
     const index = updatedDataSource.findIndex((user) => user.id === editRow)
     updatedDataSource.splice(index,1,{...values, key: editRow})
     setUsers(updatedDataSource)
     setEditRow(null)
+  
+    try {
+      const response = await fetch(`http://localhost:5000/products/${editRow}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+      if (response.ok) {
+        setFormSubmitted(true);
+      } else {
+        console.error(response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
+  
+  
+
+  // const onFinish =  (values) =>{
+  //   const updatedDataSource =[...users]
+  //   const index = updatedDataSource.findIndex((user) => user.id === editRow)
+  //   updatedDataSource.splice(index,1,{...values, key: editRow})
+  //   setUsers(updatedDataSource)
+  //   setEditRow(null)
+  // }
   
   return (
       <div className='center'>
