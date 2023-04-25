@@ -37,16 +37,16 @@ const tailFormItemLayout = {
     },
   },
 };
-const AddProduct = () => {
+const AddCategory = () => {
   const [form] = Form.useForm();
 
  
 
  
-  async function addProduct(value) {
+  async function addCategory(value) {
     console.log(value);
     try {
-      const response = await fetch("http://localhost:5000/products", {
+      const response = await fetch("http://localhost:5000/category", {
         method: 'POST',
         body: JSON.stringify(value),
         headers: {
@@ -77,7 +77,7 @@ const AddProduct = () => {
       {...formItemLayout}
       form={form}
       name="register"
-      onFinish={addProduct}
+      onFinish={addCategory}
       initialValues={{
         residence: ["zhejiang", "hangzhou", "xihu"],
         prefix: "86",
@@ -87,84 +87,24 @@ const AddProduct = () => {
       }}
       scrollToFirstError
     >
-      <h1>Add Product</h1>
+      <h1>Add Category</h1>
     <Form.Item
         name="name"
-        label="Product Name"
-        tooltip="What is your products name?"
+        label="Category Name"
+        tooltip="What is category name?"
         rules={[
           {
             required: true,
-            message: "Please input your product name!",
+            message: "Please input category name!",
             whitespace: true,
           },
         ]}
       >
         <Input/>
       </Form.Item>
-
-      <Form.Item
-        name="price"
-        label="Price"
-        rules={[
-          {
-            required: true,
-            message: "Please input your product's price!",
-            whitespace: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        name="img"
-        label="Image"
-        rules={[
-          {
-            required: true,
-            message: "Please input your image URL !",
-            whitespace: true,
-          },
-        ]}
-      >
-        <Input/>
-      </Form.Item>   
-      
-
-      <Form.Item
-        name="quantity"
-        label="Quantity"
-        rules={[
-          {
-            required: true,
-            message: "Please input product's quantity",
-            whitespace: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        name="categoryId"
-        label="Category ID"
-        rules={[
-          {
-            required: true,
-            message: "Please input your Category ID !",
-            whitespace: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      
-      
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
-          Add Product
+          Add Category
         </Button>
       </Form.Item>
     </Form>
@@ -172,4 +112,4 @@ const AddProduct = () => {
   </div>
   );
 };
-export default AddProduct;
+export default AddCategory;

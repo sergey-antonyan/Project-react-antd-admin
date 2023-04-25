@@ -80,3 +80,70 @@
   justify-content: center;
   text-align: center;
 }
+
+/* ======================================= */
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Alegreya', serif;
+  
+}
+
+.navbarCont{
+  display: flex;
+  background-color: antiquewhite;
+  height: 100px;
+  
+}
+
+.navbar{
+  background-color: red;
+  display: flex;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navbar ul{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.list{
+  display: flex;
+  width: 400px;
+  list-style: none;
+  justify-content: space-around;
+  margin-left: 5px;
+  align-items: center;
+}
+
+
+.list a {
+  display: flex;
+  justify-content: space-around;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+.list a:hover {
+  transform: scale(1.2);
+  color: #333;
+  background-color: #fff9f9;
+  text-decoration:dotted;
+}
+

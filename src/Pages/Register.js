@@ -6,6 +6,7 @@ import {
   Input
 } from "antd";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 
 const formItemLayout = {
@@ -49,9 +50,10 @@ const Register = () => {
       const response = await fetch("http://localhost:5000/register" , {
         method: 'POST',
         body: JSON.stringify(value),
-         headers: {
+        headers: {
           "Content-Type": "application/json ; charset=UTF-8",
          },
+        
       })
 
       const data = await response.json();
@@ -67,6 +69,7 @@ const Register = () => {
   
   return (
     <div className="registerCont">
+      
       <div className="registerChild">
     <Form
       {...formItemLayout}
@@ -153,13 +156,13 @@ const Register = () => {
             message: "Please input your password!",
           },
         ]}
-        hasFeedback
+        
       >
         <Input.Password />
       </Form.Item>
 
       <Form.Item
-        name="agreement"
+        
         valuePropName="checked"
         rules={[
           {
@@ -179,6 +182,8 @@ const Register = () => {
         <Button type="primary" htmlType="submit">
           Register
         </Button>
+        <p>Have an Account?</p>
+        <br/> <Link to={"/login"}>Login</Link>
       </Form.Item>
     </Form>
     </div>

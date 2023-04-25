@@ -4,7 +4,6 @@ import {
 } from '@ant-design/icons';
 import {AiOutlineDashboard , AiOutlineShoppingCart, AiOutlineUser, AiOutlineFolderAdd, AiOutlineUnorderedList} from "react-icons/ai";
 import{BiCategory} from "react-icons/bi";
-import { MdOutlineChangeCircle , MdDeleteOutline } from "react-icons/md";
 import { Button, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
@@ -60,18 +59,7 @@ const MainLayout = () => {
                 label: 'ProductList',
 
               },
-              {
-                key: 'updateproduct',
-                icon: <MdOutlineChangeCircle />,
-                label: 'UpdateProduct',
-
-              },
-              {
-                key: 'deleteproduct',
-                icon: <MdDeleteOutline />,
-                label: 'DeleteProduct',
-
-              }]
+              ]
             },
             {
               key: 'Categories',
@@ -87,18 +75,6 @@ const MainLayout = () => {
                 key: 'categorylist',
                 icon: <AiOutlineUnorderedList />,
                 label: 'CategoryList',
-
-              },
-              {
-                key: 'updateCategory',
-                icon: <MdOutlineChangeCircle />,
-                label: 'UpdateCategory',
-
-              },
-              {
-                key: 'deletecategory',
-                icon: <MdDeleteOutline />,
-                label: 'DeleteCategory',
 
               }]
             }

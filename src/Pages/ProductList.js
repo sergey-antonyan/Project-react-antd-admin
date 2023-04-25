@@ -1,51 +1,52 @@
 import React from 'react'
 import { Table, Typography , Space, Button, Form,Input} from 'antd';
 import { useState , useEffect } from 'react';
+import { AiOutlineDelete, AiOutlineEdit, AiOutlineSave } from 'react-icons/ai'
 
 const ProductList = () => {
 
-  const [users, setUsers] = useState([]);
+  const [products, setProducts] = useState([]);
   const [editRow, setEditRow] = useState(null)
   const [form] = Form.useForm();
   const [formSubmitted, setFormSubmitted] = useState(false);
-
+  
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchproducts = async () => {
       try {
         const response = await fetch('http://localhost:5000/products');
         const data = await response.json();
-        setUsers(data);
+        setProducts(data);
       } catch (error) {
         console.error(error);
       }
     };
   
     if (formSubmitted) {
-      fetchUsers();
+      fetchproducts();
       setFormSubmitted(false);
     }
   }, [formSubmitted]);
   
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchproducts = async () => {
       try {
         const response = await fetch('http://localhost:5000/products');
         const data = await response.json();
-        setUsers(data);
+        setProducts(data);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchUsers();
+    fetchproducts();
   }, []);
 
   const onFinish = async (values) =>{
-    const updatedDataSource =[...users]
+    const updatedDataSource =[...products]
     const index = updatedDataSource.findIndex((user) => user.id === editRow)
     updatedDataSource.splice(index,1,{...values, key: editRow})
-    setUsers(updatedDataSource)
+    setProducts(updatedDataSource)
     setEditRow(null)
   
     try {
@@ -66,22 +67,28 @@ const ProductList = () => {
     }
   }
   
-  
+  const handleDelete = async (productId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/products/${productId}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setFormSubmitted(true);
+      } else {
+        console.error(response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  // const onFinish =  (values) =>{
-  //   const updatedDataSource =[...users]
-  //   const index = updatedDataSource.findIndex((user) => user.id === editRow)
-  //   updatedDataSource.splice(index,1,{...values, key: editRow})
-  //   setUsers(updatedDataSource)
-  //   setEditRow(null)
-  // }
-  
+
   return (
       <div className='center'>
         <Form form={form} onFinish={onFinish}>
         <Space size={20}>
           <Typography.Title level={4} >Inventory</Typography.Title>
-          <Table columns={[
+          <Table  columns={[
             {title : "Product Name",
              dataIndex: "name",
              render:(text, record)=>{
@@ -124,6 +131,7 @@ const ProductList = () => {
             },
             {title : "Image",
              dataIndex: "img",
+             width : 50,
              render:(text, record)=>{
               if(editRow === record.key){
                return (
@@ -133,12 +141,17 @@ const ProductList = () => {
                 required: true,
                 message: "Please enter img",
                }]}
+               
                >
-                <Input/>
+                <Input />
                 </Form.Item>
                )
               }else{
-                return <p>{text}</p>
+                return (
+                <div style={{ maxWidth: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <p>{text}</p>
+                </div>
+                )
               }
              }
             },
@@ -196,13 +209,17 @@ const ProductList = () => {
                 })
               }}
               
-              >Edit</Button>
-              <Button type='link' htmlType='submit'>Save</Button>
+              ><AiOutlineEdit/></Button>
+              <Button type='link' htmlType='submit'><AiOutlineSave/></Button>
+              <Button 
+              type='link'
+              onClick={() => handleDelete(record.id)}
+              ><AiOutlineDelete/></Button>
               </>
              }
             },
           ]}
-          dataSource={users.map(product => ({ ...product, key: product.id }))}
+          dataSource={products.map(product => ({ ...product, key: product.id }))}
           >
           </Table>
         </Space>

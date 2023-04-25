@@ -27,20 +27,11 @@ const ProductList = () => {
         <Space size={20}>
           <Typography.Title level={4}>Inventory</Typography.Title>
           <Table columns={[
-            {title : "Product Name",
+            {title : "Category Name",
              dataIndex: "name"
             },
-            {title : "Price",
-             dataIndex: "impriceg"
-            },
-            {title : "Image",
-             dataIndex: "img"
-            },
-            {title : "Quantity",
-             dataIndex: "quantity"
-            },
             {title : "Category",
-             dataIndex: "categoryId"
+             dataIndex: "id"
             },
           ]}
           dataSource={users.map(category => ({ ...category, key: category.id }))}
