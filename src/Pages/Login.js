@@ -53,7 +53,7 @@ const Login = () => {
     } else if (
       data.status === "Logged in" &&
       data.role === 0 &&
-      data.is_verified === 1
+      data.is_verified === 1 
     ) {
       navigate("/");
     }
