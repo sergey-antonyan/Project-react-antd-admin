@@ -11,6 +11,7 @@ import CategoryList from './Pages/CategoryList';
 import AddProduct from './Pages/AddProduct';
 import AddCategory from './Pages/AddCategory';
 import Header from './Components/Header';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 
 function App() {
@@ -19,10 +20,11 @@ function App() {
     
     <Router>
       <Routes>
+        
         <Route path='/' element={<Header/>}/>
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
-        <Route path='/admin' element={<MainLayout/>}>
+        <Route path='/admin' element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
           <Route index element={<Dashboard/>} />
           <Route path='customers' element={<Users/>}/>
           <Route path='productList' element={<ProductList/>}/>

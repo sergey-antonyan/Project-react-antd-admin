@@ -15,6 +15,11 @@ const MainLayout = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   const navigate = useNavigate();
+
+  const logout = ()=>{
+    localStorage.removeItem("jwt")
+    navigate("/")
+  }
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -98,7 +103,9 @@ const MainLayout = () => {
               height: 64,
             }}
           />
+          <Button onClick={logout}>Logout</Button>
         </Header>
+        
         <Content
           style={{
             margin: '24px 16px',

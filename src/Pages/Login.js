@@ -35,6 +35,7 @@ const tailFormItemLayout = {
 const Login = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const token = localStorage.getItem('jwt');
 
   async function submitLogin(value) {
     console.log(value);
@@ -43,11 +44,14 @@ const Login = () => {
       body: JSON.stringify(value),
       headers: {
         "Content-Type": "application/json ; charset=UTF-8",
+        Authorization: token,
       },
     });
 
     const data = await response.json();
+    localStorage.setItem("jwt", data.jwt);
     if (data.status === "Logged in" && data.role === 1) {
+  
       console.log(123)
       navigate("/admin");
     } else if (
@@ -57,6 +61,7 @@ const Login = () => {
     ) {
       navigate("/");
     }
+    
   }
 
   return (

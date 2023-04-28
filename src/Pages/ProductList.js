@@ -54,6 +54,7 @@ const ProductList = () => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          "Authorization": localStorage.getItem("token"),
         },
         body: JSON.stringify(values),
       });
@@ -71,6 +72,9 @@ const ProductList = () => {
     try {
       const response = await fetch(`http://localhost:5000/products/${productId}`, {
         method: 'DELETE',
+        headers: {
+          "Authorization": localStorage.getItem("token"),
+        }
       });
       if (response.ok) {
         setFormSubmitted(true);
