@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Typography , Space, Button, Form,Input} from 'antd';
+import { Table,  Space, Button, Form,Input} from 'antd';
 import { useState , useEffect } from 'react';
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineSave } from 'react-icons/ai'
 
@@ -54,7 +54,7 @@ const ProductList = () => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          "Authorization": localStorage.getItem("token"),
+        Authorization: localStorage.getItem("jwt"),
         },
         body: JSON.stringify(values),
       });
@@ -73,7 +73,7 @@ const ProductList = () => {
       const response = await fetch(`http://localhost:5000/products/${productId}`, {
         method: 'DELETE',
         headers: {
-          "Authorization": localStorage.getItem("token"),
+        Authorization: localStorage.getItem("jwt"),
         }
       });
       if (response.ok) {
@@ -91,7 +91,6 @@ const ProductList = () => {
       <div className='center'>
         <Form form={form} onFinish={onFinish}>
         <Space size={20}>
-          <Typography.Title level={4} >Inventory</Typography.Title>
           <Table  columns={[
             {title : "Product Name",
              dataIndex: "name",

@@ -22,7 +22,7 @@
 
 .Logo{
   height: 64px;
-  background-color: #ff0080;
+  background-color: #f1f1ef;
   text-align: center;
 }
 
@@ -83,7 +83,7 @@
 
 /* ======================================= */
 
-
+/* Header */
 
 * {
   margin: 0;
@@ -101,7 +101,7 @@
 }
 
 .navbar{
-  background-color: red;
+  background-color: #e3e3e3;
   display: flex;
   width: 100%;
   text-align: center;
@@ -147,3 +147,44 @@
   text-decoration:dotted;
 }
 
+
+ /* Admin page */
+
+.adminHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.adminHeader h1{
+  font-size: 1.9rem;
+  text-shadow: 1px 1px rebeccapurple;
+}
+
+.logoutBtn{
+  text-align-last: right;
+
+}
+
+/* Admin's Tables */
+
+.table-container{
+  align-items: center;
+  text-align: center;
+}
+
+.ant-table-thead tr{
+  background-color: #f6f6f8;
+  align-items: center;
+  text-align: center;
+}
+
+
+.ant-table-wrapper .ant-table-thead >tr>th{
+  text-align: center;;
+  background-color: #e3e3e3;
+  width: 800px;
+}
+.ant-table-cell{
+  background-color: #f6f6f8;
+}

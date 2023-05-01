@@ -51,6 +51,7 @@ const AddCategory = () => {
         body: JSON.stringify(value),
         headers: {
           "Content-Type": "application/json ; charset=UTF-8",
+          Authorization: localStorage.getItem("jwt"),
         },
       });
   

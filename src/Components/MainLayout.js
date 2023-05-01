@@ -3,6 +3,7 @@ import {
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
 import {AiOutlineDashboard , AiOutlineShoppingCart, AiOutlineUser, AiOutlineFolderAdd, AiOutlineUnorderedList} from "react-icons/ai";
+import {GrLogout} from "react-icons/gr";
 import{BiCategory} from "react-icons/bi";
 import { Button, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
@@ -88,6 +89,7 @@ const MainLayout = () => {
       </Sider>
       <Layout>
         <Header
+          className='adminHeader'
           style={{
             padding: 0,
             background: colorBgContainer,
@@ -103,7 +105,8 @@ const MainLayout = () => {
               height: 64,
             }}
           />
-          <Button onClick={logout}>Logout</Button>
+          <h1>Welcome to Admin Page</h1>
+          <Button className='logoutBtn' onClick={logout}><GrLogout/></Button>
         </Header>
         
         <Content

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Typography , Space} from 'antd';
+import { Table,  Space} from 'antd';
 import { useState , useEffect } from 'react';
 
 const ProductList = () => {
@@ -25,7 +25,6 @@ const ProductList = () => {
   return (
     
         <Space size={20}>
-          <Typography.Title level={4}>Inventory</Typography.Title>
           <Table columns={[
             {title : "Category Name",
              dataIndex: "name"

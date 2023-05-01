@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Typography , Space} from 'antd';
+import { Table , Space} from 'antd';
 import { useState , useEffect } from 'react';
 
 const Users = () => {
@@ -23,9 +23,8 @@ const Users = () => {
   
   
   return (
-    
+      <div className="table-container">
         <Space size={20}>
-          <Typography.Title level={4}>Inventory</Typography.Title>
           <Table columns={[
             {title : "User Name",
              dataIndex: "userName"
@@ -47,7 +46,7 @@ const Users = () => {
           >
           </Table>
         </Space>
-    
+        </div>
   )
 }
 

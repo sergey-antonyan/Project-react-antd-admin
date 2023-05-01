@@ -1,5 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import {GrLogout} from "react-icons/gr";
+import {FaRegUser} from "react-icons/fa";
+
 
 
 const Header = () => {
@@ -30,8 +33,10 @@ const Header = () => {
           <li>
             <Link to="/register">Sign in</Link>
           </li>
-          <li>
-            <Link onClick={logOut}>Logout</Link>
+          
+          <li style={{ display: 'inline-flex', alignItems: 'center' }}>
+          <span style={{width: '40px'}}><FaRegUser/></span>
+            <Link onClick={logOut}><GrLogout/></Link>
           </li>
         </ul>
       </nav>
